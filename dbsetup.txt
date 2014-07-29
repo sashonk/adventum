@@ -1,0 +1,48 @@
+.open adventum.db
+
+CREATE TABLE IF NOT EXISTS users(
+	name VARCHAR(15) NOT NULL,
+	password VARCHAR(60) NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS user_roles(
+	name VARCHAR(15) NOT NULL,
+	role_name VARCHAR(15) NOT NULL,
+	PRIMARY KEY (name, role_name)
+);
+
+CREATE TABLE IF NOT EXISTS people(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	firstName VARCHAR(255),
+	lastName VARCHAR(255),
+	email VARCHAR(50),
+	login VARCHAR(15)
+
+);
+
+/*CREATE INDEX people_id ON people(id);
+CREATE INDEX people_login ON people(login);
+*/
+
+
+/* ivanov:qwerty */
+INSERT INTO users(name, password) values ('ivanov', 'b1b3773a05c0ed0176787a4f1574ff0075f7521e');
+INSERT INTO user_roles(name, role_name) values ('ivanov', 'admin');
+INSERT INTO user_roles(name, role_name) values ('ivanov', 'manager');
+
+/* petrov:123456 */
+INSERT INTO users(name, password) values ('petrov', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+INSERT INTO user_roles(name, role_name) values ('petrov', 'manager');
+INSERT INTO user_roles(name, role_name) values ('petrov', 'user');
+
+/* sidorov:supertrooper */
+INSERT INTO users(name, password) values ('sidorov', '69cc4c3d88d831b4521a20aa5325d54a6ae5c9d5');
+INSERT INTO user_roles(name, role_name) values ('sidorov', 'user');
+
+
+
+INSERT INTO PEOPLE (firstName, lastName, email, login) values ('Petr', 'Petrov', 'ppetrov@mail.com', 'petrov');
+INSERT INTO PEOPLE (firstName, lastName, email, login) values ('Ivan', 'Ivanov', 'soba4ka@mail.com', 'ivanov');
+INSERT INTO PEOPLE (firstName, lastName, email, login) values ('Sidor', 'Sidorov', 'xxx@mail.com', 'sidorov');
+

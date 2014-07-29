@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           
+     
+    <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
+
+        <property name="url" value="jdbc:sqlite:C:\\adventum.db"/>
+        <property name="driverClassName" value="org.sqlite.JDBC"/>
+        <property name="maxActive" value="30"/>        
+         <property name="maxIdle" value="8"/>
+        <property name="minIdle" value="2"/>   
+        <property name="validationQuery" value="select count(1) from users"/>         
+        <property name="testOnBorrow" value="true"/>          
+    </bean>
+    
+    <bean id="npjt" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="ds"></constructor-arg>               
+    </bean>
+    
+
+    <bean id="personDao" class="adventum.dao.PersonDAO">
+        <property name="npjt">
+		  <ref bean="npjt"/>
+		</property>   
+    </bean>
+
+    
+
+	
+
+</beans>

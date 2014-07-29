@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+ 
+    
+    <bean name="/admin/personal.html" 
+	class="adventum.controllers.Personal" >
+        <property name="dao">
+		  <ref bean="personDao"/>
+		</property>  		
+	</bean> 
+
+
+    <bean name="/admin/delete.html" 
+	class="adventum.controllers.DeletePerson" >
+        <property name="dao">
+		  <ref bean="personDao"/>
+		</property>  		
+	</bean>  
+
+    <bean name="/admin/person.html" 
+	class="adventum.controllers.EditPerson" >
+        <property name="dao">
+		  <ref bean="personDao"/>
+		</property>  		
+	</bean>    
+
+    <bean name="/admin/create.html" 
+	class="adventum.controllers.CreatePerson" >
+        <property name="dao">
+		  <ref bean="personDao"/>
+		</property>  		
+	</bean>    
+
+
+
+    <bean name="/*.html" 
+	class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+
+    <bean name="/public/*.html" 
+	class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+
+    <bean name="/private/*.html" 
+	class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+
+    <bean name="/admin/*.html" 
+	class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+    
+ 
+    <bean id="viewResolver"
+    	class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    
+
+       
+    
+</beans>
